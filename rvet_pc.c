@@ -150,27 +150,34 @@ void process0(){
     
     pthread_create(&t1, NULL, (void*)Send, NULL);
     pthread_create(&t2, NULL, (void*)Receive, NULL);
-
+    
+    //Event
     Event(pid, &clock1);
     
+    //Send
     Event(pid, &clock1);
     clock1.pid_dest = 1;
     produtor1(clock1);
-   
+    
+    //Receive
     clock1 = consumidor2();
     Event(pid, &clock1);
-   
+    
+    //Send
     Event(pid, &clock1);
     clock1.pid_dest = 2;
     produtor1(clock1);
    
+    //Receive
     clock1 = consumidor2();
     Event(pid, &clock1);
-   
+    
+    //Send
     Event(pid, &clock1);
     clock1.pid_dest = 1;
     produtor1(clock1);
-
+    
+    //Event
     Event(pid, &clock1);
    
     printf("Process: %d, Clock: (%d, %d, %d)\n", 0, clock1.p[0], clock1.p[1], clock1.p[2]);
@@ -207,14 +214,17 @@ void process1(){
     
     pthread_create(&t1, NULL, (void*)Send, NULL);
     pthread_create(&t2, NULL, (void*)Receive, NULL);
-   
+    
+    //Send
     Event(pid, &clock1);
     clock1.pid_dest = 0;
     produtor1(clock1);
-   
+    
+    //Receive
     clock1 = consumidor2();
     Event(pid, &clock1);
-   
+    
+    //Receive
     clock1 = consumidor2();
     Event(pid, &clock1);
 
@@ -252,13 +262,16 @@ void process2(){
     
     pthread_create(&t1, NULL, (void*)Send, NULL);
     pthread_create(&t2, NULL, (void*)Receive, NULL);
-   
+    
+    //Event
     Event(pid, &clock1);
-   
+    
+    //Send
     Event(pid, &clock1);
     clock1.pid_dest = 0;
     produtor1(clock1);
-
+    
+    //Receive
     clock1 = consumidor2();
     Event(pid, &clock1);
 
