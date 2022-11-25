@@ -114,7 +114,7 @@ void *Receive (){
         
     Clock clock = clock1; 
     
-    MPI_Recv(clock.p, 3, MPI_INT, clock.pid_dest, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    MPI_Recv(clock.p, 3, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     
     int k = 0;
     while(k < 3){
